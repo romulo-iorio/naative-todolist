@@ -1,5 +1,5 @@
 export * from "./Checkbox";
-export * from "./DeleteButton";
+export * from "./DeleteTaskButton";
 export * from "./Input";
 export * from "./Loading";
 export * from "./Task";

@@ -11,7 +11,7 @@ interface Props {
   onPress: () => void;
 }
 
-export const DeleteButton: React.FC<Props> = ({ onPress }) => {
+export const DeleteTaskButton: React.FC<Props> = ({ onPress }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const styleKey = isFocused ? "focused" : "base";

@@ -4,7 +4,7 @@ import type { TaskData } from "@/types";
 
 import { Checkbox } from "../Checkbox";
 import { styles } from "./styles";
-import { DeleteButton } from "../DeleteButton";
+import { DeleteTaskButton } from "../DeleteTaskButton";
 
 interface Props {
   onChangeTaskCompletionState: (task: TaskData) => void;
@@ -29,7 +29,7 @@ export const Task: React.FC<Props> = ({
 
       <Text style={style.text}>{task.title}</Text>
 
-      <DeleteButton onPress={() => onRemoveTask(task.id)} />
+      <DeleteTaskButton onPress={() => onRemoveTask(task.id)} />
     </TouchableOpacity>
   );
 };
