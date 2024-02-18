@@ -9,8 +9,13 @@ import { FlatList, StatusBar, Text, View } from "react-native";
 import { useState } from "react";
 
 import type { TaskData } from "@/types";
-import { TasksStatus } from "@/components/TasksStatus";
-import { Header, Task, Loading } from "@/components";
+import {
+  TasksListEmptyComponent,
+  TasksStatus,
+  Loading,
+  Header,
+  Task,
+} from "@/components";
 
 import { styles } from "./styles";
 
@@ -28,7 +33,7 @@ export const Home = () => {
     Inter_600SemiBold,
     Inter_700Bold,
   });
-  const [tasks, setTasks] = useState<TaskData[]>([exampleTask]);
+  const [tasks, setTasks] = useState<TaskData[]>([]);
 
   const handleTaskCompletionStateChange = (task: TaskData) => {
     setTasks((prevTask) => {
@@ -63,6 +68,7 @@ export const Home = () => {
       <TasksStatus tasks={tasks} />
 
       <FlatList
+        ListEmptyComponent={TasksListEmptyComponent}
         keyExtractor={(task) => task.id}
         style={styles.tasksContainer}
         renderItem={renderTask}
