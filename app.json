@@ -4,27 +4,29 @@
     "slug": "native-todo-list",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/rocket.svg",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Logo.svg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1a1a1a"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rifc.nativetodolist"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/rocket.svg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.rifc.nativetodolist"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/rocket.svg"
     },
     "plugins": [
       "expo-font"
