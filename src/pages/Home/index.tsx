@@ -52,12 +52,36 @@ export const Home = () => {
       return Alert.alert("Você não pode adicionar uma tarefa vazia!");
 
     const newTask: TaskData = {
+      title: newTaskText.trim(),
       id: generateTaskId(),
-      title: newTaskText,
       isDone: false,
     };
 
     setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
+  const handleRemoveTask = (taskId: string) => {
+    const removeTask = () => {
+      setTasks((prevTasks) =>
+        prevTasks.filter((prevTask) => prevTask.id !== taskId)
+      );
+    };
+
+    Alert.alert(
+      "Remover Tarefa",
+      "Você tem certeza que deseja remover essa tarefa?",
+      [
+        {
+          text: "Não, cancelar!",
+          style: "cancel",
+        },
+        {
+          text: "Sim, remover!",
+          style: "destructive",
+          onPress: removeTask,
+        },
+      ]
+    );
   };
 
   if (!fontsLoaded) return <Loading />;
@@ -65,7 +89,7 @@ export const Home = () => {
   const renderTask = ({ item }: { item: TaskData }) => (
     <Task
       onChangeTaskCompletionState={handleTaskCompletionStateChange}
-      onRemoveTask={() => {}}
+      onRemoveTask={handleRemoveTask}
       task={item}
     />
   );
