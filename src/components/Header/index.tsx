@@ -1,11 +1,9 @@
 import { Image, View } from "react-native";
-
-import type { TaskData } from "@/types";
-
-import { styles } from "./styles";
-import { AddTaskButton } from "../AddTaskButton";
-import { Input } from "../Input";
 import { useState } from "react";
+
+import { AddTaskButton } from "../AddTaskButton";
+import { styles } from "./styles";
+import { Input } from "../Input";
 
 const logoSrc = require("../../assets/images/Logo.png");
 
@@ -13,11 +11,11 @@ interface Props {
   handleAddTask: (newTaskText: string) => void;
 }
 
-export const Header: React.FC<Props> = ({ handleAddTask }) => {
+export const Header: React.FC<Props> = ({ handleAddTask: addTaskHandler }) => {
   const [newTaskText, setNewTaskText] = useState("");
 
-  const onPress = () => {
-    handleAddTask(newTaskText);
+  const handleAddTask = () => {
+    addTaskHandler(newTaskText);
     setNewTaskText("");
   };
 
@@ -29,10 +27,11 @@ export const Header: React.FC<Props> = ({ handleAddTask }) => {
         <Input
           placeholder="Adicione uma nova tarefa"
           onChangeText={setNewTaskText}
+          onEndEditing={handleAddTask}
           value={newTaskText}
         />
 
-        <AddTaskButton onPress={onPress} disabled={!newTaskText} />
+        <AddTaskButton onPress={handleAddTask} disabled={!newTaskText} />
       </View>
     </View>
   );
