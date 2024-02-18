@@ -5,7 +5,7 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 import { Loading } from "@/components";
 
@@ -19,5 +19,9 @@ export default function App() {
 
   if (!fontsLoaded) return <Loading />;
 
-  return <View className="bg-slate-900 flex-1">Hello React Native</View>;
+  return (
+    <View className="bg-slate-900 flex-1">
+      <Text>Hello React Native</Text>
+    </View>
+  );
 }
