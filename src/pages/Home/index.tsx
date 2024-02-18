@@ -5,12 +5,13 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { StatusBar, Text, View } from "react-native";
+import { FlatList, StatusBar, Text, View } from "react-native";
 
 import type { TaskData } from "@/types";
 import { AddTaskButton, Header, Task, Loading } from "@/components";
 import { useState } from "react";
 import { TasksStatus } from "@/components/TasksStatus";
+import { styles } from "./styles";
 
 const exampleTask: TaskData = {
   id: "1",
@@ -40,6 +41,14 @@ export const Home = () => {
 
   if (!fontsLoaded) return <Loading />;
 
+  const renderTask = ({ item }: { item: TaskData }) => (
+    <Task
+      onChangeTaskCompletionState={handleTaskCompletionStateChange}
+      onRemoveTask={() => {}}
+      task={item}
+    />
+  );
+
   return (
     <View className="bg-gray-600 flex-1 items-center">
       <StatusBar
@@ -52,11 +61,12 @@ export const Home = () => {
 
       <TasksStatus tasks={tasks} />
 
-      {/* <Task
-        onChangeTaskCompletionState={handleTaskCompletionStateChange}
-        onRemoveTask={() => {}}
-        task={tasks[0]}
-      /> */}
+      <FlatList
+        keyExtractor={(task) => task.id}
+        style={styles.tasksContainer}
+        renderItem={renderTask}
+        data={tasks}
+      />
     </View>
   );
 };
