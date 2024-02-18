@@ -25,6 +25,7 @@ export const useTasksHandlers = ({ setTasks }: Props) => {
       return Alert.alert("Você não pode adicionar uma tarefa vazia!");
 
     const newTask: TaskData = {
+      createdAt: new Date().toISOString(),
       title: newTaskText.trim(),
       id: generateRandomID(),
       isDone: false,

@@ -20,5 +20,15 @@ export const useTasks = () => {
     AsyncStorage.setItem(TASKS_STORAGE_KEY, tasksJSON);
   }, [tasks]);
 
-  return { tasks, setTasks };
+  const orderedTasks = tasks.sort((a, b) => {
+    const { isDone: isDoneA, createdAt: createdAtA } = a;
+    const { isDone: isDoneB, createdAt: createdAtB } = b;
+
+    if (isDoneA === isDoneB)
+      return new Date(createdAtB).getTime() - new Date(createdAtA).getTime();
+
+    return isDoneA ? 1 : -1;
+  });
+
+  return { tasks: orderedTasks, setTasks };
 };
