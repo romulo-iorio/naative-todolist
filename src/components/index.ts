@@ -1,3 +1,4 @@
+export * from "./AddTaskButton";
 export * from "./Checkbox";
 export * from "./DeleteTaskButton";
 export * from "./Input";

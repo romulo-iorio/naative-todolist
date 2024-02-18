@@ -9,7 +9,7 @@ import { StatusBar, Text, View } from "react-native";
 
 import type { TaskData } from "@/types";
 import { Loading } from "../components/Loading";
-import { Task } from "../components";
+import { AddTaskButton, Task } from "../components";
 import { useState } from "react";
 
 const exampleTask: TaskData = {
@@ -53,6 +53,8 @@ export const Home = () => {
         onRemoveTask={() => {}}
         task={tasks[0]}
       />
+
+      <AddTaskButton onPress={() => {}} />
     </View>
   );
 };
