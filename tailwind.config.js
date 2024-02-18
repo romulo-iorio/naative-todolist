@@ -25,6 +25,11 @@ module.exports = {
         },
         danger: "#e25858",
       },
+      fontSize: {
+        sm: 12,
+        md: 14,
+        lg: 16,
+      },
     },
   },
   plugins: [],
