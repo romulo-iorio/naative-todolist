@@ -10,6 +10,7 @@ import { StatusBar, Text, View } from "react-native";
 import type { TaskData } from "@/types";
 import { AddTaskButton, Header, Task, Loading } from "@/components";
 import { useState } from "react";
+import { TasksStatus } from "@/components/TasksStatus";
 
 const exampleTask: TaskData = {
   id: "1",
@@ -48,6 +49,8 @@ export const Home = () => {
       />
 
       <Header tasks={tasks} />
+
+      <TasksStatus tasks={tasks} />
 
       {/* <Task
         onChangeTaskCompletionState={handleTaskCompletionStateChange}
