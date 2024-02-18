@@ -1,3 +1,4 @@
+import type { TouchableOpacityProps } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
@@ -6,14 +7,18 @@ import { globalStyles } from "@/global-styles";
 
 import { styles } from "./styles";
 
-interface Props {
-  onPress: () => void;
-}
+const getStyleKey = (isFocused: boolean, isDisabled = false) => {
+  if (isDisabled) return "disabled";
+  if (isFocused) return "focused";
+  return "base";
+};
 
-export const AddTaskButton: React.FC<Props> = ({ onPress }) => {
+export const AddTaskButton: React.FC<TouchableOpacityProps> = ({
+  ...props
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const styleKey = isFocused ? "focused" : "base";
+  const styleKey = getStyleKey(isFocused, props.disabled);
   const style = styles[styleKey];
 
   return (
@@ -23,7 +28,7 @@ export const AddTaskButton: React.FC<Props> = ({ onPress }) => {
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       style={style.container}
-      onPress={onPress}
+      {...props}
     >
       <Feather
         color={globalStyles.colors.gray[100]}

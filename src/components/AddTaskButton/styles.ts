@@ -25,4 +25,10 @@ export const styles = {
       backgroundColor: globalStyles.colors["blue"],
     },
   }),
+  disabled: StyleSheet.create({
+    container: {
+      ...commonStyles.container,
+      backgroundColor: globalStyles.colors.gray["300"],
+    },
+  }),
 };
