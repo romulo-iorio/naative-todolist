@@ -5,8 +5,7 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { Alert, FlatList, StatusBar, Text, View } from "react-native";
-import { useState } from "react";
+import { FlatList, StatusBar, View } from "react-native";
 
 import type { TaskData } from "@/types";
 import {
@@ -18,15 +17,7 @@ import {
 } from "@/components";
 
 import { styles } from "./styles";
-
-const exampleTask: TaskData = {
-  id: "1",
-  title:
-    "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-  isDone: false,
-};
-
-const generateTaskId = () => Math.random().toString(36).substr(2, 9);
+import { useTasks, useTasksHandlers } from "@/hooks";
 
 export const Home = () => {
   const [fontsLoaded] = useFonts({
@@ -35,54 +26,9 @@ export const Home = () => {
     Inter_600SemiBold,
     Inter_700Bold,
   });
-  const [tasks, setTasks] = useState<TaskData[]>([]);
-
-  const handleTaskCompletionStateChange = (task: TaskData) => {
-    setTasks((prevTask) => {
-      return prevTask.map((prevTask) => {
-        if (prevTask.id !== task.id) return prevTask;
-
-        return { ...prevTask, isDone: !prevTask.isDone };
-      });
-    });
-  };
-
-  const handleAddTask = (newTaskText: string) => {
-    if (!newTaskText)
-      return Alert.alert("Você não pode adicionar uma tarefa vazia!");
-
-    const newTask: TaskData = {
-      title: newTaskText.trim(),
-      id: generateTaskId(),
-      isDone: false,
-    };
-
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-  };
-
-  const handleRemoveTask = (taskId: string) => {
-    const removeTask = () => {
-      setTasks((prevTasks) =>
-        prevTasks.filter((prevTask) => prevTask.id !== taskId)
-      );
-    };
-
-    Alert.alert(
-      "Remover Tarefa",
-      "Você tem certeza que deseja remover essa tarefa?",
-      [
-        {
-          text: "Não, cancelar!",
-          style: "cancel",
-        },
-        {
-          text: "Sim, remover!",
-          style: "destructive",
-          onPress: removeTask,
-        },
-      ]
-    );
-  };
+  const { tasks, setTasks } = useTasks();
+  const { handleTaskCompletionStateChange, handleRemoveTask, handleAddTask } =
+    useTasksHandlers({ setTasks, tasks });
 
   if (!fontsLoaded) return <Loading />;
 
