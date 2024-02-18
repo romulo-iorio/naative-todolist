@@ -5,7 +5,7 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { FlatList, StatusBar, Text, View } from "react-native";
+import { Alert, FlatList, StatusBar, Text, View } from "react-native";
 import { useState } from "react";
 
 import type { TaskData } from "@/types";
@@ -26,6 +26,8 @@ const exampleTask: TaskData = {
   isDone: false,
 };
 
+const generateTaskId = () => Math.random().toString(36).substr(2, 9);
+
 export const Home = () => {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
@@ -43,6 +45,19 @@ export const Home = () => {
         return { ...prevTask, isDone: !prevTask.isDone };
       });
     });
+  };
+
+  const handleAddTask = (newTaskText: string) => {
+    if (!newTaskText)
+      return Alert.alert("Você não pode adicionar uma tarefa vazia!");
+
+    const newTask: TaskData = {
+      id: generateTaskId(),
+      title: newTaskText,
+      isDone: false,
+    };
+
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   if (!fontsLoaded) return <Loading />;
@@ -63,11 +78,12 @@ export const Home = () => {
         translucent
       />
 
-      <Header tasks={tasks} />
+      <Header handleAddTask={handleAddTask} />
 
       <TasksStatus tasks={tasks} />
 
       <FlatList
+        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         ListEmptyComponent={TasksListEmptyComponent}
         keyExtractor={(task) => task.id}
         style={styles.tasksContainer}

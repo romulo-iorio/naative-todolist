@@ -14,7 +14,6 @@ export const Input: React.FC<TextInputProps> = ({ ...props }) => {
     <TextInput
       {...props}
       placeholderTextColor={globalStyles.colors.gray[300]}
-      placeholder="Adicione uma nova tarefa"
       onBlur={() => setIsFocused(false)}
       onFocus={() => setIsFocused(true)}
       style={style}

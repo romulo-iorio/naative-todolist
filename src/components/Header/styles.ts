@@ -5,7 +5,7 @@ import { globalStyles } from "@/global-styles";
 export const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    height: "21.305%",
+    height: 173,
     width: "100%",
     backgroundColor: globalStyles.colors.gray[700],
     justifyContent: "center",
@@ -13,9 +13,9 @@ export const styles = StyleSheet.create({
     position: "relative",
   },
   logo: {
-    width: "29.424%",
+    width: 110.34,
+    height: 32,
     padding: 0,
-    height: "18.497%",
   },
   inputContainer: {
     // width: "87.2%",

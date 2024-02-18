@@ -8,6 +8,5 @@ export const styles = StyleSheet.create({
     paddingLeft: 24,
     marginTop: 20,
     flex: 1,
-    gap: 8,
   },
 });

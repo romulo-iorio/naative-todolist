@@ -2,9 +2,9 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 import type { TaskData } from "@/types";
 
+import { DeleteTaskButton } from "../DeleteTaskButton";
 import { Checkbox } from "../Checkbox";
 import { styles } from "./styles";
-import { DeleteTaskButton } from "../DeleteTaskButton";
 
 interface Props {
   onChangeTaskCompletionState: (task: TaskData) => void;
@@ -17,7 +17,7 @@ export const Task: React.FC<Props> = ({
   onRemoveTask,
   task,
 }) => {
-  const styleKey = !task.isDone ? "isDone" : "base";
+  const styleKey = task.isDone ? "isDone" : "base";
   const style = styles[styleKey];
 
   return (
