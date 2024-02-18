@@ -1,8 +1,8 @@
 export const globalStyles = {
   fontFamily: {
-    heading: "Inter_600SemiBold",
-    subtitle: "Inter_500Medium",
-    body: "Inter_400Regular",
+    semiBold: "Inter_600SemiBold",
+    medium: "Inter_500Medium",
+    regular: "Inter_400Regular",
     bold: "Inter_700Bold",
   },
   colors: {
