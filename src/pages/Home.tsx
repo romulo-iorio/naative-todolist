@@ -8,8 +8,7 @@ import {
 import { StatusBar, Text, View } from "react-native";
 
 import type { TaskData } from "@/types";
-import { Loading } from "../components/Loading";
-import { AddTaskButton, Task } from "../components";
+import { AddTaskButton, Header, Task, Loading } from "@/components";
 import { useState } from "react";
 
 const exampleTask: TaskData = {
@@ -41,20 +40,20 @@ export const Home = () => {
   if (!fontsLoaded) return <Loading />;
 
   return (
-    <View className="bg-gray-600 flex-1 justify-center items-center">
+    <View className="bg-gray-600 flex-1 items-center">
       <StatusBar
         backgroundColor="transparent"
         barStyle="light-content"
         translucent
       />
 
-      <Task
+      <Header tasks={tasks} />
+
+      {/* <Task
         onChangeTaskCompletionState={handleTaskCompletionStateChange}
         onRemoveTask={() => {}}
         task={tasks[0]}
-      />
-
-      <AddTaskButton onPress={() => {}} />
+      /> */}
     </View>
   );
 };

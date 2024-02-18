@@ -8,9 +8,9 @@ const commonStyles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     borderRadius: 8,
-    width: "100%",
     padding: 16,
     height: 54,
+    flex: 1,
   },
 });
 
