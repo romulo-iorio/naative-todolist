@@ -1,8 +1,9 @@
-import { View } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { View } from "react-native";
+
+import { globalStyles } from "@/global-styles";
 
 import { styles } from "./styles";
-import { globalStyles } from "@/global-styles";
 
 interface Props {
   isDone: boolean;
