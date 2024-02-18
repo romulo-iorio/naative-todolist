@@ -6,11 +6,12 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { FlatList, StatusBar, Text, View } from "react-native";
+import { useState } from "react";
 
 import type { TaskData } from "@/types";
-import { AddTaskButton, Header, Task, Loading } from "@/components";
-import { useState } from "react";
 import { TasksStatus } from "@/components/TasksStatus";
+import { Header, Task, Loading } from "@/components";
+
 import { styles } from "./styles";
 
 const exampleTask: TaskData = {
